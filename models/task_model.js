@@ -1,8 +1,11 @@
 const mongoose = require("mongoose");
+require('dotenv').config();
+
 
 // Connect to MangoDB
-mongoose.connect('mongodb://localhost:27017/TODO',{ useUnifiedTopology: true });
 
+DB_PATH = process.env.DATABASE || 'mongodb://localhost:27017/TODO';
+mongoose.connect(DB_PATH, { useUnifiedTopology: true });
 // Check if connection is successfull
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error: "));

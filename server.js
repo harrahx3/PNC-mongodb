@@ -3,10 +3,16 @@ var cors = require('cors');
 const app = express();
 app.use(cors()); // To allow any origin
 app.use(express.json()); // To read json data in request body
+require('dotenv').config();
 
-app.listen(4000, ()=>{
-    console.log("App run on http://localhost:3000");
-})
+console.log(process.env);
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, ()=>{
+    console.log("App run on http://localhost:"+PORT);
+});
+
 
 // import Task model
 const TaskModel = require("./models/task_model");
